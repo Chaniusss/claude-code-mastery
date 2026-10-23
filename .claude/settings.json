@@ -1,3 +1,9 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash"
+    ]
+  },
   "outputStyle": "default",
+  "plansDirectory": ".claude/plans/"
 }
