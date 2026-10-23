@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ko" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="프론트엔드 개발자 홍길동의 웹 이력서">
+  <title>홍길동 | 프론트엔드 개발자 이력서</title>
+
+  <!-- Google Fonts: 영문 제목은 Montserrat, 한글 본문은 Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS (CDN). 다크 모드는 html 요소의 dark 클래스로 전환 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // 디자인 토큰: 포인트 컬러(brand), 배경 네이비(navy), 폰트
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: "#ff7a5c", strong: "#c93f21" },
+            navy: { 900: "#0f1722", 800: "#162130", 700: "#1f2d40" },
+          },
+          fontFamily: {
+            sans: ["Montserrat", "Noto Sans KR", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-zinc-50 font-sans text-zinc-900 antialiased dark:bg-navy-900 dark:text-zinc-100">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-3 focus:py-2 focus:text-zinc-900">본문으로 건너뛰기</a>
+
+  <!-- 상단 내비게이션 -->
+  <header class="sticky top-0 z-40 border-b border-zinc-200 bg-white/80 backdrop-blur dark:border-white/10 dark:bg-navy-900/80">
+    <nav class="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-4" aria-label="주요 메뉴">
+      <a href="#hero" class="text-lg font-bold tracking-tight" data-field="name">홍길동</a>
+
+      <!-- 모바일에서는 토글로 열고, md 이상에서는 가로로 표시 -->
+      <div id="nav-menu" class="hidden absolute inset-x-0 top-full border-b border-zinc-200 bg-white shadow-md dark:border-white/10 dark:bg-navy-900 md:static md:flex md:items-center md:border-0 md:bg-transparent md:shadow-none dark:md:bg-transparent">
+        <ul class="flex flex-col px-6 py-2 md:flex-row md:gap-8 md:p-0">
+          <li><a href="#about" class="nav-link block rounded px-2 py-2 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">소개</a></li>
+          <li><a href="#skills" class="nav-link block rounded px-2 py-2 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">기술</a></li>
+          <li><a href="#projects" class="nav-link block rounded px-2 py-2 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">프로젝트</a></li>
+          <li><a href="#experience" class="nav-link block rounded px-2 py-2 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">경력</a></li>
+          <li><a href="#contact" class="nav-link block rounded px-2 py-2 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">연락처</a></li>
+        </ul>
+      </div>
+
+      <div class="flex items-center gap-1">
+        <button id="theme-toggle" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-full text-zinc-600 transition hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-300 dark:hover:bg-white/10 dark:hover:text-white" aria-label="라이트 모드로 전환">
+          <!-- 다크 모드일 때는 해 아이콘(라이트 모드로 전환), 라이트 모드일 때는 달 아이콘 -->
+          <svg class="hidden h-5 w-5 dark:block" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" /></svg>
+          <svg class="h-5 w-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" /></svg>
+        </button>
+        <button id="menu-toggle" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-full text-zinc-600 transition hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-300 dark:hover:bg-white/10 dark:hover:text-white md:hidden" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav-menu">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 히어로: 텍스트와 프로필 사진을 두 열로 배치 -->
+  <section id="hero" class="scroll-mt-24 mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
+    <div class="text-center md:text-left">
+      <p class="flex items-center justify-center gap-2 text-lg font-medium md:justify-start">
+        안녕하세요 <span aria-hidden="true" class="h-2 w-2 rounded-full bg-brand"></span>
+      </p>
+      <p class="mt-2 text-2xl font-medium text-zinc-700 dark:text-zinc-300">저는 <span data-field="name"></span>입니다</p>
+      <h1 class="mt-2 text-4xl font-bold leading-tight tracking-tight md:text-6xl" data-field="role"></h1>
+      <p class="mx-auto mt-6 max-w-md leading-relaxed text-zinc-600 dark:text-zinc-400 md:mx-0" data-field="intro"></p>
+      <div id="hero-links" class="mt-10 flex flex-wrap justify-center gap-4 md:justify-start"></div>
+    </div>
+
+    <div class="relative mx-auto w-full max-w-sm">
+      <!-- 사진을 감싸는 코랄 링 (글로우는 style.css) -->
+      <div aria-hidden="true" class="hero-ring absolute -inset-4 rounded-full"></div>
+      <div id="profile-photo" class="relative"></div>
+      <span aria-hidden="true" class="absolute -left-10 top-1/4 hidden font-mono text-3xl text-brand/60 md:block">&lt;</span>
+      <span aria-hidden="true" class="absolute -right-10 bottom-1/4 hidden font-mono text-3xl text-brand/60 md:block">&gt;</span>
+    </div>
+  </section>
+
+  <!-- 사용 기술 띠: js/main.js가 skills 데이터로 채움 -->
+  <div class="border-y border-zinc-200 bg-zinc-100 dark:border-white/10 dark:bg-navy-800/60">
+    <ul id="skill-strip" aria-label="사용 기술" class="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-6 py-6 text-sm font-medium uppercase tracking-widest text-zinc-600 dark:text-zinc-400"></ul>
+  </div>
+
+  <main id="main" class="mx-auto max-w-6xl space-y-24 px-6 py-20 md:py-28">
+    <!-- 자기소개: 좌측 서비스 목록, 우측 소개글과 통계 -->
+    <section id="about" class="scroll-mt-24">
+      <div class="mb-14 text-center">
+        <h2 class="text-3xl font-bold tracking-tight md:text-4xl">자기소개</h2>
+        <span aria-hidden="true" class="mx-auto mt-4 block h-12 w-0.5 bg-brand"></span>
+      </div>
+      <div class="grid items-start gap-12 md:grid-cols-2">
+        <ul id="services-list" class="space-y-8 border-l-2 border-brand/60 pl-8"></ul>
+        <div>
+          <p class="leading-relaxed text-zinc-700 dark:text-zinc-300" data-field="about"></p>
+          <dl id="stats-list" class="mt-10 grid grid-cols-3 gap-6"></dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- 기술 스택 -->
+    <section id="skills" class="scroll-mt-24">
+      <div class="mb-14 text-center">
+        <h2 class="text-3xl font-bold tracking-tight md:text-4xl">기술 스택</h2>
+        <span aria-hidden="true" class="mx-auto mt-4 block h-12 w-0.5 bg-brand"></span>
+      </div>
+      <div id="skills-list" class="grid gap-6 md:grid-cols-3"></div>
+    </section>
+
+    <!-- 프로젝트 -->
+    <section id="projects" class="scroll-mt-24">
+      <div class="mb-14 text-center">
+        <h2 class="text-3xl font-bold tracking-tight md:text-4xl">프로젝트</h2>
+        <span aria-hidden="true" class="mx-auto mt-4 block h-12 w-0.5 bg-brand"></span>
+      </div>
+      <div id="projects-list" class="grid gap-6 md:grid-cols-3"></div>
+    </section>
+
+    <!-- 경력 및 학력 -->
+    <section id="experience" class="scroll-mt-24">
+      <div class="mb-14 text-center">
+        <h2 class="text-3xl font-bold tracking-tight md:text-4xl">경력 및 학력</h2>
+        <span aria-hidden="true" class="mx-auto mt-4 block h-12 w-0.5 bg-brand"></span>
+      </div>
+      <div class="grid gap-12 md:grid-cols-2">
+        <div>
+          <h3 class="mb-6 text-lg font-semibold">경력</h3>
+          <ul id="experience-list" class="space-y-8"></ul>
+        </div>
+        <div>
+          <h3 class="mb-6 text-lg font-semibold">학력</h3>
+          <ul id="education-list" class="space-y-8"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 연락처 -->
+    <section id="contact" class="scroll-mt-24">
+      <div class="mb-14 text-center">
+        <h2 class="text-3xl font-bold tracking-tight md:text-4xl">연락처</h2>
+        <span aria-hidden="true" class="mx-auto mt-4 block h-12 w-0.5 bg-brand"></span>
+      </div>
+      <ul id="contact-list" class="grid gap-4 md:grid-cols-3"></ul>
+    </section>
+  </main>
+
+  <footer class="border-t border-zinc-200 py-10 text-center text-sm text-zinc-600 dark:border-white/10 dark:text-zinc-400">
+    <p data-field="footer"></p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

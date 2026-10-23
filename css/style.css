@@ -1,0 +1,46 @@
+/* Tailwind로 처리하기 어려운 최소한의 커스텀 스타일 */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 섹션이 화면에 들어오면 페이드인 (main.js에서 클래스 부여) */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* 현재 보고 있는 섹션의 내비 링크 강조 (라이트 모드는 대비가 높은 진한 코랄) */
+.nav-link.is-active {
+  color: #c93f21;
+  font-weight: 600;
+}
+
+.dark .nav-link.is-active {
+  color: #ff7a5c;
+}
+
+/* 히어로 프로필 사진을 감싸는 코랄 링과 은은한 글로우 */
+.hero-ring {
+  border: 6px solid #ff7a5c;
+  box-shadow: 0 0 80px rgba(255, 122, 92, 0.35);
+}
+
+/* 움직임을 줄이도록 설정한 사용자를 위한 예외 처리 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
