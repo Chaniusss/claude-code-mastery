@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash"
-    ]
+    ],
+    "defaultMode": "plan"
   },
   "outputStyle": "default",
   "plansDirectory": ".claude/plans/"
